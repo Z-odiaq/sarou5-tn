@@ -1,0 +1,47 @@
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .ad-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Voir l'annonce</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <div class="mb-3">
+      <ion-list>
+        <ion-item *ngIf="ad" class="mb-2">
+          <ion-label>{{ ad.title }}</ion-label>
+          <ion-badge class="text-right">{{ ad.type }}</ion-badge>
+          <ion-img [src]="ad.image" alt="Image" class="card-img"></ion-img>
+          <ion-chip>{{ ad.price }} DT</ion-chip>
+        </ion-item>
+        <ion-label class="m-2">{{ ad.description }}</ion-label>
+      </ion-list>
+    
+      <ion-footer class="text-center">
+        <ion-chip [outline]="true" (click)="ownerAds()">Annonce publiée par : {{ ad.email }}</ion-chip>
+      </ion-footer>
+    </div>
+    
+    
+
+
+
+  </ion-content>
+
+</body>
+

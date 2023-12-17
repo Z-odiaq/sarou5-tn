@@ -1,0 +1,74 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer une annonce</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Créer une annonce</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input [(ngModel)]="newAd.title" name="title" type="text" required></ion-input>
+        <label class="text-danger" *ngIf="newAd.title.length > 0 && newAd.title.length < 1">
+          Veuillez entrer un titre.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="newAd.description" name="description" required></ion-textarea>
+        <label class="text-danger" *ngIf="newAd.description.length > 0 && newAd.description.length < 10">
+          Veuillez entrer une description d'au moins 10 caractères.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Type</ion-label>
+        <ion-select [(ngModel)]="newAd.type" name="type" required>
+          <ion-select-option value="Immobilier">Immobilier</ion-select-option>
+          <ion-select-option value="Autre">Autre</ion-select-option>
+        </ion-select>
+        <label class="text-danger" *ngIf="newAd.type.length > 0 && newAd.type.length < 1">
+          Veuillez choisir un type.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Image Link</ion-label>
+        <ion-input [(ngModel)]="newAd.image" name="image" type="text" required></ion-input>
+        <label class="text-danger" *ngIf="newAd.image.length > 0 && newAd.image.length < 1">
+          Veuillez entrer un lien d'image.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input [(ngModel)]="newAd.price" name="price" type="number" required></ion-input>
+        <label class="text-danger" *ngIf="newAd.price.length > 0 && newAd.price.length < 1">
+          Veuillez entrer un prix.
+        </label>
+      </ion-item>
+
+      <ion-button expand="full" (click)="saveAd()" color="primary">
+        <ion-icon name="save-outline" slot="start"></ion-icon> Postuler
+      </ion-button>
+    </ion-list>
+
+  </ion-content>
+
+</body>
+

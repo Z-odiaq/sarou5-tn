@@ -1,0 +1,7 @@
+{
+  "name": "sarou5-tn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

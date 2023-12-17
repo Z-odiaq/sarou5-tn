@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Les annonces de {{email}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let ad of userAds">
+      <ion-label>{{ ad.title }}</ion-label>
+      <ion-badge class="text-right">{{ ad.type }}</ion-badge>
+      <ion-img [src]="ad.image" alt="Ad Image" class="ad-image"></ion-img>
+      <ion-chip>{{ ad.price }} DT</ion-chip>
+      <ion-label class="mt-2">{{ ad.description }}</ion-label>
+      <ion-button (click)="viewAd(ad.id)" color="primary">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

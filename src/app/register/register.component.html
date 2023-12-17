@@ -1,0 +1,62 @@
+
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Inscription</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <ion-card>
+            <ion-card-header>
+              <ion-icon name="person-add-outline" class="mr-2"></ion-icon> Inscription
+            </ion-card-header>
+            <ion-card-content>
+              <form>
+                <ion-item class="mb-3">
+                  <ion-label position="floating">
+                    <ion-icon name="mail-outline" class="mr-2"></ion-icon> E-mail
+                  </ion-label>
+                  <ion-input type="email" id="email" name="email" [(ngModel)]="email" aria-describedby="emailHelp"></ion-input>
+                  <ion-text class="text-danger" *ngIf="email.length > 0 && !email.includes('@')">
+                    L'adresse e-mail doit être valide.
+                  </ion-text>
+                </ion-item>
+                <ion-item class="mb-3">
+                  <ion-label position="floating">
+                    <ion-icon name="lock-closed-outline" class="mr-2"></ion-icon> Mot de passe
+                  </ion-label>
+                  <ion-input type="password" id="password" name="password" [(ngModel)]="password"></ion-input>
+                  <ion-text class="text-danger" *ngIf="password.length > 0 && password.length < 6">
+                    Le mot de passe doit contenir au moins 6 caractères.
+                  </ion-text>
+                  <ion-text class="text-danger" *ngIf="error.length">
+                    {{ error }}
+                  </ion-text>
+                </ion-item>
+                <ion-button expand="full" (click)="register()" color="primary">
+                  <ion-icon name="person-add-outline" slot="start"></ion-icon> Soumettre
+                </ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+
+</body>
+
+

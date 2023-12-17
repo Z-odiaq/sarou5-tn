@@ -1,0 +1,72 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .ad-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-title>Acceuil</ion-title>
+          </ion-col>
+            <ion-col size="6" class="ion-text-end">
+            <div *ngIf="user" >
+              <ion-chip>{{ user.email }}</ion-chip>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+  
+
+  <ion-content class="ion-padding">
+
+    <div *ngIf="!user" class="mb-3">
+      <ion-button (click)="router.navigate(['/login'])" expand="full" color="primary">
+        <ion-icon name="log-in-outline"></ion-icon> Connexion
+      </ion-button>
+      <ion-button (click)="router.navigate(['/register'])" expand="full" color="success">
+        <ion-icon name="person-add-outline"></ion-icon> Inscription
+      </ion-button>
+    </div>
+
+
+    <div *ngIf="user" class="mb-3">
+      <ion-button (click)="viewUserAds()" color="info">
+        <ion-icon name="list-outline"></ion-icon> Vos annonces
+      </ion-button>
+    </div>
+
+    <div *ngIf="user" class="mb-3">
+
+      <ion-button (click)="router.navigate(['/create-annonce'])" color="success">
+        <ion-icon name="add-outline"></ion-icon> Créer
+      </ion-button>
+      <ion-button (click)="logout()" color="danger">
+        <ion-icon name="log-out-outline"></ion-icon> Déconnexion
+      </ion-button>
+    </div>
+
+    <div class="mb-3">
+      <ion-list>
+        <ion-item *ngFor="let ad of ads" class="mb-2">
+          <ion-label>{{ ad.title }}</ion-label>
+          <ion-badge class="text-right">{{ ad.type }}</ion-badge>
+          <ion-img [src]="ad.image" alt="Image" class="card-img" (click)="viewAd(ad.id)"></ion-img>
+          <ion-chip>{{ ad.price }} DT</ion-chip>
+        </ion-item>
+      </ion-list>
+    </div>
+
+
+  </ion-content>

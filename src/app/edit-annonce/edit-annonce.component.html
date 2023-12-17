@@ -1,0 +1,77 @@
+
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Modifier l'annonce</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Titre</ion-label>
+        <ion-input [(ngModel)]="editedAd.title" name="title" type="text" required></ion-input>
+        <label class="text-danger" *ngIf="editedAd.title.length < 1">
+          Veuillez entrer un titre.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="editedAd.description" name="description" required></ion-textarea>
+        <label class="text-danger" *ngIf="editedAd.description.length > 0 && editedAd.description.length < 10">
+          Veuillez entrer une description d'au moins 10 caractères.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select [(ngModel)]="editedAd.type" name="type" required>
+          <ion-select-option value="Immobilier">Immobilier</ion-select-option>
+          <ion-select-option value="Autre">Autre</ion-select-option>
+        </ion-select>
+        <label class="text-danger" *ngIf="editedAd.type.length > 0 && editedAd.type.length < 1">
+          Veuillez choisir un type.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lien d'Image</ion-label>
+        <ion-input [(ngModel)]="editedAd.image" name="image" type="text" required></ion-input>
+        <label class="text-danger" *ngIf="editedAd.image.length > 0 && editedAd.image.length < 1">
+          Veuillez entrer un lien d'image.
+        </label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prix</ion-label>
+        <ion-input [(ngModel)]="editedAd.price" name="price" type="number" required></ion-input>
+        <label class="text-danger" *ngIf="editedAd.price ==='' ">
+          Veuillez entrer un prix.
+        </label>
+      </ion-item>
+      <ion-text class="text-danger" *ngIf="error.length">
+        {{ error }}
+      </ion-text>
+      <ion-button expand="full" (click)="saveChanges()"  color="primary">
+        <ion-icon name="save-outline" slot="start"></ion-icon> Sauvegarder
+      </ion-button>
+
+    </ion-list>
+
+
+
+  </ion-content>
+
+</body>
